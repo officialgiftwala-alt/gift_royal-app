@@ -16,10 +16,8 @@ const icons = {
 const page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
 const keyByFile = { "index.html": "index", "withdraw.html": "withdraw", "leaderboard.html": "leaderboard", "transition.html": "transition", "settings.html": "settings", "tokens.html": "transition" };
 const activeKey = keyByFile[page] || "index";
-const html = activeKey === "index"
-  ? `<div class="nav-wrap"><nav class="nav"><a href="index.html" data-key="index"><span class="tile">${icons.index}</span></a></nav></div>`
-  : `<div class="nav-wrap"><nav class="nav">` +
-    items.map(it => `<a href="${it.href}" data-key="${it.key}"><span class="tile">${it.key === 'transition' || it.key === 'tokens' ? `<svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9fe3ff"></stop><stop offset="100%" stop-color="#86a6ff"></stop></linearGradient></defs><path d="M4 6v4h4" fill="none" stroke="#a5b0ff" stroke-width="2" stroke-linecap="round"></path><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" fill="none" stroke="url(#r1)" stroke-width="3" stroke-linecap="round"></path><path d="M12 8v5l3 2" fill="none" stroke="#5f79ff" stroke-width="2.2" stroke-linecap="round"></path></svg>` : icons[it.key]}</span></a>`).join("") +
-    `</nav></div>`;
+const html = `<div class="nav-wrap"><nav class="nav">` +
+  items.map(it => `<a href="${it.href}" data-key="${it.key}"><span class="tile">${it.key === 'transition' || it.key === 'tokens' ? `<svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9fe3ff"></stop><stop offset="100%" stop-color="#86a6ff"></stop></linearGradient></defs><path d="M4 6v4h4" fill="none" stroke="#a5b0ff" stroke-width="2" stroke-linecap="round"></path><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" fill="none" stroke="url(#r1)" stroke-width="3" stroke-linecap="round"></path><path d="M12 8v5l3 2" fill="none" stroke="#5f79ff" stroke-width="2.2" stroke-linecap="round"></path></svg>` : icons[it.key]}</span></a>`).join("") +
+  `</nav></div>`;
 el.innerHTML = html;
 Array.from(document.querySelectorAll('#mob-nav a')).forEach(a => { if (a.dataset.key === activeKey) a.classList.add('active'); });
